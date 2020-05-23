@@ -1,0 +1,99 @@
+.container{
+    width: 80%;
+    margin: 60px auto;
+    font-size: larger;
+}
+h1{
+    margin-bottom: 60px;
+}
+form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    width: 100%;
+}
+
+input {
+    width: 80%;
+    height: 50px;
+    font-size: 1em;
+    border: none;
+    border-bottom: 1px solid gray;
+}
+input:focus{
+    outline: none;
+}
+
+label{
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+form p {
+    margin-bottom: 60px;
+}
+.error{
+    display: inline-block;
+    color: red;
+}
+
+
+.modal {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modalContent {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+  }
+  .modalContent h2 {
+      border: none;
+      color: black;
+  }
+.continue {
+    float: right;
+    text-decoration: none;
+    color: black;
+    margin-bottom: 20px;
+}
+span.clear { clear: left; display: block; height: 20px;}
+
+.back{
+    cursor: pointer;
+    user-select: none;
+}
+
+.submit {
+    text-align: center;
+    background-color: #606060;
+    color: white;
+    text-decoration: none;
+    border:none;
+    width: 120px;
+    height: 50px;
+    border-radius: 5%;
+    font-size: large;
+    cursor: pointer;
+    margin-right: 20px;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+@media (max-width: 420px){
+  
+   form{
+       grid-template-columns: 1fr;
+   }
+}
