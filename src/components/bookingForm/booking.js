@@ -47,25 +47,7 @@ class Booking extends Component {
         
     };
 
-    checkValidity = () => {
-        var pattern = new RegExp( /[+][9][1]\d{10}/)
-        var error=""
-        if(!pattern.test(this.state.phone)){
-            error="Enter valid phone number"
-            this.setState({...this.state, error: error})
-            return
-        }
-        if(this.state.issueDate > this.state.returnDate){
-            error="Return date should be greater than issue Date"
-            this.setState({...this.state, error: error})
-            return
-        }
-        this.setState({...this.state, error: ""})
-    }
-
-    clickSubmit = (event) => {
-        event.preventDefault();
-        this.checkValidity()
+    afterSetStateFinished = () => {
         if(!this.state.error){
             var formData = new FormData()
             formData.set("name", this.state.name)
@@ -91,6 +73,34 @@ class Booking extends Component {
                 this.setState({...this.setState, success: false, subError: err})
             })
         }
+    }
+
+    checkValidity = () => {
+        var pattern = new RegExp( /[+][9][1]\d{10}/)
+        var error=""
+        if(!pattern.test(this.state.phone)){
+            error="Enter valid phone number"
+            this.setState({...this.state, error: error},() => {
+                this.afterSetStateFinished();
+            })
+            return
+        }
+        if(this.state.issueDate > this.state.returnDate){
+            error="Return date should be greater than issue Date"
+            this.setState({...this.state, error: error},() => {
+                this.afterSetStateFinished();
+            })
+            return
+        }
+        this.setState({...this.state, error: ""},() => {
+            this.afterSetStateFinished();
+        })
+    }
+
+    clickSubmit = (event) => {
+        event.preventDefault();
+        this.checkValidity()
+        
     }
     showError = () => {
         if(this.state.error)
